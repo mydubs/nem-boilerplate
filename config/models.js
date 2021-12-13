@@ -1,15 +1,15 @@
-//
+// *
 // * --- Dependencies --- *
-//
+// *
 const fs = require("fs");
 const join = require("path").join;
 const models = join(__dirname, "../models");
 
-/*
-  This uses filesystem (fs) to read in
-  each file with the '.js' extension
-  and load it into the app
-*/
+// * --- --- *
+// * This uses filesystem (fs) to read in
+// * each file with the '.js' extension
+// * and load it into the app
+// * --- --- *
 
 fs.readdirSync(models)
   .filter((file) => ~file.search(/^[^.].*\.js$/))
