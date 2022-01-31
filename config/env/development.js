@@ -6,6 +6,7 @@ async function getConfig() {
     const dbCollection = process.env.MONGODB_COLLECTION || "express-dev";
     const mongourl = process.env.MONGODB_URL || 'mongodb://localhost"27017';
     const jwtSecret = process.env.JWT_SECRET || "jwtsecret";
+    const appName = process.env.APP_NAME || "NEM Boilerplate";
 
     let config = {
       db: mongourl + dbCollection,
@@ -13,7 +14,7 @@ async function getConfig() {
       secret: jwtSecret,
       env: "development",
       feUrl: null,
-      appName: "Express Boilerplate - DEVELOPMENT",
+      appName: appName + " - DEVELOPMENT",
     };
     if (process.env.FE_URL) config.feUrl = process.env.FE_URL;
     if (process.env.APP_NAME) config.appName = process.env.APP_NAME;

@@ -14,7 +14,7 @@ module.exports = function (app) {
   // * --- CORS configuration --- *
   //
   let corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: [],
   };
   // Adds the front-end's URL path to cors
   // if defined in the .env file.
