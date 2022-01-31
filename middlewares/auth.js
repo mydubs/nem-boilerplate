@@ -5,8 +5,11 @@ const secret = process.env.JWT_SECRET || "devsecret";
 const sendRes = require("../shared/helpers").sendResponse;
 
 exports.verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
-  console.log(token);
+  // * Gets the authorization header
+  let bearerToken = req.headers["authorization"];
+  // * Removes 'Bearer ' from token string
+  let token = bearerToken.replace("Bearer ", "");
+
   if (!token) {
     return res.status(403).json(sendRes(false, "No Token"));
   }

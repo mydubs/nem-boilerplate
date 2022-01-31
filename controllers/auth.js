@@ -14,7 +14,6 @@ const secret = process.env.JWT_SECRET;
 
 // * Creates new user
 exports.create = async(function* (req, res) {
-  console.log(req.body);
   const user = new User(req.body);
   try {
     yield user.save();
@@ -42,15 +41,21 @@ exports.login = async(function* (req, res, next) {
       } else {
         user.authenticate(password, async function (err, match) {
           if (match && !err) {
+            let exp = Math.floor(Date.now() / 1000) + 60 * 60;
             const token = await jwt.sign(
               {
-                exp: Math.floor(Date.now() / 1000) + 60 * 60,
+                exp: exp,
                 id: user.id,
                 username: user.username,
               },
               secret
             );
-            res.json(sendRes(true, "Successfully signed in!", { token }));
+            res.json(
+              sendRes(true, "Successfully signed in!", {
+                token,
+                exp,
+              })
+            );
           } else {
             res.json(sendRes(false, "Bad Login Info"));
           }

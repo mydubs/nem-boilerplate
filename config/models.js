@@ -8,6 +8,7 @@ const models = join(__dirname, "../models");
 // * --- --- *
 // * This uses filesystem (fs) to read in
 // * each file with the '.js' extension
+// * from the '/models' folder
 // * and load it into the app
 // * --- --- *
 

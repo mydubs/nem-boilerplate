@@ -24,6 +24,8 @@ module.exports = function (app) {
   app.post("/auth/create", auth.create);
   app.post("/auth/login", auth.login);
 
-  // * Protected Route Test
+  // *
+  // * --- Protected Route Test --- *
+  // *
   app.get("/auth/test", authMid.verifyToken, auth.protected);
 };
